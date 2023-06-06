@@ -7,6 +7,7 @@ uploaded_file = st.file_uploader(label = "To get started, please upload your dat
 if uploaded_file is not None:
     df = pd.read_csv(uploaded_file)
     st.write(df)
+    
 
 #st.sidebar.title('title of sidebar')
 #st.sidebar.markdown('markdown **text** in the *sidebar*')
