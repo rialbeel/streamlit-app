@@ -9,7 +9,9 @@ if uploaded_file is not None:
     st.write(df)
     st.write(f"The number of rows in the dataframe is: {len(df.index)} rows.")
     st.write(f"The number of columns in the dataframe is: {len(df.columns)} columns.")
-    st.write(f"The number of categorical variables is:.")
+    st.write(f"The number of numerical variables is: {len(df.select_dtypes(include = [np.number]).columns)}.")
+    st.write(f"The number of categorical variables is: {len(df.select_dtypes(include = [np.object_]).columns)}.")
+    st.write(f"The number of bool variables is: {len(df.select_dtypes(include = [np.bool_]).columns)}.")
     
 
 #st.sidebar.title('title of sidebar')
