@@ -23,8 +23,12 @@ if uploaded_file is not None:
         five_num_sum = df[choice].describe()
         st.write(five_num_sum)
         fig = plt.figure(figsize = (10, 4))
-        sns.histplot(df[choice], kde = True)
+        sns.distplot(df[choice], kde = True, hist = True, color = "darkblue")
         plt.xlabel(choice)
         plt.ylabel("Frequency")
         plt.title(f"Distribution Plot of {choice}")
         st.pyplot(fig)
+    if np.issubdtype(df[choice].dtype, np.object_):
+        counts = df[choice].value_counts(normalize = True)
+        prop = pd.DataFrame({"Value": counts.index, "Proportion": counts.values})
+        st.write(prop)
