@@ -14,8 +14,17 @@ if uploaded_file is not None:
     st.write(f"The number of numerical variables is: {len(df.select_dtypes(include = [np.number]).columns)}.")
     st.write(f"The number of categorical variables is: {len(df.select_dtypes(include = [np.object_]).columns)}.")
     st.write(f"The number of bool variables is: {len(df.select_dtypes(include = [np.bool_]).columns)}.")
+    
+    st.write("##")
+    
     choice = st.selectbox("Which column would you like more information about?", df.columns)
     st.write("You selected:", choice)
     if np.issubdtype(df[choice].dtype, np.number):
         five_num_sum = df[choice].describe()
         st.write(five_num_sum)
+        fig, ax = plt.subplots()
+        ax.hist(df[choice], density = True)
+        plt.xlabel(choice)
+        plt.ylabel("Frequency")
+        plt.title(f"Distribution Plot of {choice}")
+        st.pyplot(fig)
