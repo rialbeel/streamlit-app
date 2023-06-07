@@ -22,8 +22,8 @@ if uploaded_file is not None:
     if np.issubdtype(df[choice].dtype, np.number):
         five_num_sum = df[choice].describe()
         st.write(five_num_sum)
-        fig, ax = plt.subplots()
-        ax.hist(df[choice], density = True)
+        fig = plt.figure(figsize = (10, 4))
+        sns.histplot(df[choice], kde = True)
         plt.xlabel(choice)
         plt.ylabel("Frequency")
         plt.title(f"Distribution Plot of {choice}")
