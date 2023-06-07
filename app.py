@@ -34,6 +34,7 @@ if uploaded_file is not None:
         fig = plt.figure()
         sns.histplot(df[choice], stat = "proportion", color = "darkblue")
         plt.xlabel(choice)
+        plt.xticks(rotation = 90)
         plt.ylabel("Proportion")
         plt.title(f"Barplot of {choice}")
         st.pyplot(fig)
