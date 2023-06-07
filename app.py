@@ -7,6 +7,9 @@ uploaded_file = st.file_uploader(label = "To get started, please upload your dat
 if uploaded_file is not None:
     df = pd.read_csv(uploaded_file)
     st.write(df)
+    st.write(f"The number of rows in the dataframe is: {len(df.index)} rows.")
+    st.write(f"The number of columns in the dataframe is: {len(df.columns)} columns.")
+    st.write(f"The number of categorical variables is:.")
     
 
 #st.sidebar.title('title of sidebar')
