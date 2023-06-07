@@ -1,6 +1,8 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
 
 st.title('Simple Data Exploratory Analysis')
 uploaded_file = st.file_uploader(label = "To get started, please upload your data using the uploader below. Please ensure that the file you have chosen is a **.csv** file!", type = "csv")
@@ -12,18 +14,8 @@ if uploaded_file is not None:
     st.write(f"The number of numerical variables is: {len(df.select_dtypes(include = [np.number]).columns)}.")
     st.write(f"The number of categorical variables is: {len(df.select_dtypes(include = [np.object_]).columns)}.")
     st.write(f"The number of bool variables is: {len(df.select_dtypes(include = [np.bool_]).columns)}.")
-    
-
-#st.sidebar.title('title of sidebar')
-#st.sidebar.markdown('markdown **text** in the *sidebar*')
-
-#agree = st.checkbox('I agree')
-
-#if agree:
-#    st.write('Great!')
-#    st.markdown("this is markdown **text**")
-
-#agree_sidebar = st.sidebar.checkbox('side bar checkbox')
-
-#if agree_sidebar:
-#    st.sidebar.write('side bar checked')
+    choice = st.selectbox("Which column would you like more information about?", df.columns)
+    st.write("You selected:", choice)
+    if np.issubdtype(df[choice].dtype, np.number):
+        five_num_sum = df[choice].describe()
+        st.write(five_num_sum)
