@@ -10,4 +10,6 @@ it consists of the following tools for simple exploratory data analysis:
 
 Before using the application, please read through the requirements.txt and ensure that you have all the listed packages.
 
+Here is a link to the application: [Streamlit Application](https://rialbeel-streamlit-app-app-b8rciw.streamlit.app/)
+
 Enjoy!
